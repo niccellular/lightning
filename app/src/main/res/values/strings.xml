@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App -->
+    <string name="app_name">Lightning</string>
+    <!-- description -->
+    <string name="app_desc">This plugin drops CoTs for lightning strikes based on blitzortung.org</string>
+
+
+       <string name="preferences_title">Lightning Preferences</string>
+        <string name="preferences_summary">The max radius in meters to toggle Lightning visibility</string>
+        <string name="preferences_dialogTitle">Set the max radius</string>
+        <string name="preferences_distanceTitle">Max radius</string>
+        <string name="lightning_preferences">lightning_preferences</string>
+
+
+</resources>
