@@ -8,7 +8,7 @@
 -keepattributes SourceFile,LineNumberTable
 
 -applymapping <atak.proguard.mapping>
--repackageclasses atakplugin.Lightning
+-repackageclasses atakplugin.plugintemplate
 
 -keepattributes *Annotation*
 -keepattributes Signature, InnerClasses
@@ -48,37 +48,18 @@
 
 
 
--keep class * extends transapps.maps.plugin.tool.Tool {
-}
--keep class * implements transapps.maps.plugin.lifecycle.Lifecycle {
+-keep class * implements gov.tak.api.plugin.IPlugin {
 }
 
 # overcome an existing bug in the gradle subsystem (3.5.x)
 -keep class module-info
 
--keepclassmembers class com.atakmap.android.maps.** { *; }
+-keep,allowobfuscation @interface gov.tak.api.annotation.DontObfuscate
 
-# this is from trying to sign for 4.8 / switching to ProGuard from R8
--keep class kotlin.jvm.internal.** {*;}
--keep class kotlin.coroutines.jvm.internal.** {*;}
--keep class kotlin.jvm.functions.** {*;}
--keep class kotlin.coroutines.** {*;}
--keep class kotlin.collections.** {*;}
--keepclassmembers class com.atakmap.android.lightning.** { *; }
-# suppress warnings
--dontwarn module-info
--dontwarn java.awt.**
--dontwarn org.xmlpull.**
--dontwarn org.xml.sax.ContentHandler
--dontwarn org.bouncycastle.**
--dontwarn org.conscrypt.**
--dontwarn org.openjsse.**
--dontwarn android.net.**
--dontwarn java.nio.ByteBuffer
--dontwarn kotlin.jvm.internal.**
--dontwarn kotlin.coroutines.jvm.internal.**
--dontwarn kotlin.jvm.functions.**
--dontwarn kotlin.coroutines.**
--dontwarn kotlin.collections.**
--dontwarn android.content.res.XmlResourceParser
--dontwarn androidx.**
+# Do not strip any method/class that is annotated with @DontObfuscate
+-keep @gov.tak.api.annotation.DontObfuscate class * {*;}
+-keepclassmembers class * {
+    @gov.tak.api.annotation.DontObfuscate *;
+}
+
+-dontwarn androidx.viewpager.widget.ViewPager$SavedState
